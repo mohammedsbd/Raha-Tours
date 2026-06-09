@@ -535,8 +535,11 @@ export default function Home() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="inline-block px-4 py-1.5 rounded-full border border-gold text-gold text-sm font-semibold uppercase tracking-widest">
-                {t('home.ethio_saudi_home_label')}
+              <div className="flex items-center gap-4 mb-6">
+                <Image src="/saudi2.png" alt="Saudi Logo" width={50} height={50} className="object-contain" />
+                <div className="inline-block px-4 py-1.5 rounded-full border border-gold text-gold text-sm font-semibold uppercase tracking-widest">
+                  {t('home.ethio_saudi_home_label')}
+                </div>
               </div>
               <h2 className="text-5xl md:text-7xl font-display leading-tight text-text">
                 {t('home.ethio_saudi_home_title')}
@@ -567,7 +570,7 @@ export default function Home() {
               className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl border border-gold/20 bg-bg group"
             >
               <Image
-                src="/ethiosaudi.jpg"
+                src="/saudi2.png"
                 alt={t('home.ethio_saudi_home_title')}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"

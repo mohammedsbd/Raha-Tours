@@ -301,7 +301,10 @@ export default function EthiopianStories() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-16">
           <div className="lg:w-1/2 space-y-8">
             <div>
-              <h2 className="text-5xl font-display mb-4 text-text">{t('stories_page.ethio_saudi_bond_title')}</h2>
+              <div className="flex items-center gap-4 mb-4">
+                <Image src="/saudi2.png" alt="Saudi Logo" width={60} height={60} className="object-contain" />
+                <h2 className="text-5xl font-display text-text">{t('stories_page.ethio_saudi_bond_title')}</h2>
+              </div>
               <p className="text-xl text-gold font-body italic">{t('stories_page.ethio_saudi_bond_sub')}</p>
             </div>
             
@@ -321,7 +324,7 @@ export default function EthiopianStories() {
           <div className="lg:w-1/2 relative">
             <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl border border-gold/20 bg-bg group relative">
               <Image
-                src="/ethiosaudi.jpg"
+                src="/saudi2.png"
                 alt={t('stories_page.ethio_saudi_bond_image_alt')}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
