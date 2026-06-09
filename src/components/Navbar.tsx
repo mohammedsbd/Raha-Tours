@@ -64,7 +64,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-24">
           {/* Logo */}
-          <Link href="/" className="relative md:absolute ltr:left-0 md:ltr:left-4 rtl:right-0 md:rtl:right-4 md:top-1/2 md:-translate-y-1/2 block w-24 h-24 md:w-40 md:h-40 z-10">
+          <Link href="/" className="relative md:absolute ltr:left-0 md:ltr:left-4 rtl:right-0 md:rtl:right-4 md:top-1/2 md:-translate-y-1/2 block w-32 h-32 md:w-40 md:h-40 z-10">
             <Image 
               src="/logo_massive.png" 
               alt="Raha Logo" 
