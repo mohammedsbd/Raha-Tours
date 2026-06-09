@@ -123,8 +123,7 @@ export default function Packages() {
         >
           <span className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-4 block">{t('pack_page.hero_badge')}</span>
           <h1 className="text-5xl md:text-8xl font-display text-white mb-6">
-            {t('pack_page.hero_title')} <br/>
-            <span className="italic text-gold">{t('pack_page.hero_title_italic')}</span>
+            {t('pack_page.hero_title')} <span className="italic text-gold">{t('pack_page.hero_title_italic')}</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 font-body mb-10 max-w-2xl mx-auto">
             {t('pack_page.hero_sub')}

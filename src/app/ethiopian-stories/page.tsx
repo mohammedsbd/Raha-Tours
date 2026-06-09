@@ -16,11 +16,11 @@ export default function EthiopianStories() {
   const storyImages: Record<number, string> = {
     1: "https://images.unsplash.com/photo-1625419610578-25a469e7a707?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     2: "/monk.jpg",
-    3: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500&q=85",
+    3: "/jump.jpg",
     4: "/Erta_Ale.jpg", // Fixed image path if available, or stay with /afar.webp
     5: "/lucyjpg.jpg",
     6: "/injera.jpg",
-    7: "/harar.jpg",
+    7: "/hayena.jpg",
     8: "/teff.jpg",
     9: "/runing.jpg",
     10: "/gambella.jpg"
@@ -101,8 +101,7 @@ export default function EthiopianStories() {
         >
           <span className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-4 block">{t('stories_page.hero_badge')}</span>
           <h1 className="text-5xl md:text-8xl font-display text-white mb-6">
-            {t('stories_page.hero_title')} <br/>
-            <span className="italic text-gold">{t('stories_page.hero_title_italic')}</span>
+            {t('stories_page.hero_title')} <span className="italic text-gold">{t('stories_page.hero_title_italic')}</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 font-body mb-10 max-w-2xl mx-auto">
             {t('stories_page.hero_sub')}
@@ -255,6 +254,90 @@ export default function EthiopianStories() {
         </div>
       </section>
       
+      {/* Khat Culture Section */}
+      <section className="py-32 px-4 bg-bg transition-colors duration-300">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+          <div className="lg:w-1/2 space-y-8">
+            <div>
+              <h2 className="text-5xl font-display mb-4 text-text">{t('stories_page.khat_section_title')}</h2>
+              <p className="text-xl text-gold font-body italic">{t('stories_page.khat_section_sub')}</p>
+            </div>
+            
+            <div className="space-y-6 text-text-muted font-body leading-relaxed text-lg">
+              <p>{t('stories_page.khat_text_p1')}</p>
+              <p>{t('stories_page.khat_text_p2')}</p>
+            </div>
+
+            <div className="p-8 bg-surface rounded-3xl border border-gold/10 shadow-xl">
+              <h3 className="text-2xl font-display mb-4 text-text">{t('stories_page.khat_tourist_title')}</h3>
+              <p className="text-text-muted font-body leading-relaxed">
+                {t('stories_page.khat_tourist_text')}
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:w-1/2 relative">
+            <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl border border-gold/20 bg-surface group relative">
+              <Image
+                src="/chatgitl.png"
+                alt={t('stories_page.khat_image_alt')}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="bg-black/40 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10">
+                  <p className="text-white text-xs font-bold uppercase tracking-widest">{t('stories_page.featured_category')}</p>
+                  <p className="text-gold text-lg font-display">Harar, Eastern Ethiopia</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ethio Saudi Bond Section */}
+      <section className="py-32 px-4 bg-surface transition-colors duration-300 border-t border-border">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-16">
+          <div className="lg:w-1/2 space-y-8">
+            <div>
+              <h2 className="text-5xl font-display mb-4 text-text">{t('stories_page.ethio_saudi_bond_title')}</h2>
+              <p className="text-xl text-gold font-body italic">{t('stories_page.ethio_saudi_bond_sub')}</p>
+            </div>
+            
+            <div className="space-y-6 text-text-muted font-body leading-relaxed text-lg">
+              <p>{t('stories_page.ethio_saudi_bond_p1')}</p>
+              <p>{t('stories_page.ethio_saudi_bond_p2')}</p>
+            </div>
+
+            <div className="p-8 bg-bg rounded-3xl border border-gold/10 shadow-xl">
+              <h3 className="text-2xl font-display mb-4 text-text">{t('stories_page.ethio_saudi_bond_tourist_title')}</h3>
+              <p className="text-text-muted font-body leading-relaxed">
+                {t('stories_page.ethio_saudi_bond_tourist_text')}
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:w-1/2 relative">
+            <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl border border-gold/20 bg-bg group relative">
+              <Image
+                src="/ethiosaudi.jpg"
+                alt={t('stories_page.ethio_saudi_bond_image_alt')}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="bg-black/40 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10">
+                  <p className="text-white text-xs font-bold uppercase tracking-widest">{t('stories_page.featured_category')}</p>
+                  <p className="text-gold text-lg font-display">Shared Heritage & Bonds</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Traveler's Wisdom */}
       <section className="py-32 px-4 bg-surface transition-colors duration-300 border-t border-border">
         <div className="max-w-7xl mx-auto">

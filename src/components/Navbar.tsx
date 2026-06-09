@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'next-themes';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
@@ -60,13 +61,21 @@ export const Navbar = () => {
       transition={{ delay: 0.2, duration: 0.5 }}
       className="fixed top-0 w-full z-50 transition-all duration-300"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
-          <Link href="/" className="flex flex-col items-start">
-            <span className="text-2xl font-bold font-display text-gold leading-tight">ራሃ</span>
-            <span className="text-[10px] font-bold tracking-[0.2em] text-gold/80 -mt-1">{t('brand')}</span>
+          <Link href="/" className="absolute ltr:left-4 rtl:right-4 top-1/2 -translate-y-1/2 w-40 h-40 overflow-hidden z-10">
+            <Image 
+              src="/logo_massive.png" 
+              alt="Raha Logo" 
+              fill 
+              className="object-contain"
+              priority
+            />
           </Link>
+
+          {/* Spacer for Absolute Logo */}
+          <div className="w-40 hidden md:block" />
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
@@ -74,7 +83,7 @@ export const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-gold ${
+                className={`text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-colors hover:text-gold ${
                   pathname === link.href ? 'text-gold' : 'text-text'
                 }`}
               >

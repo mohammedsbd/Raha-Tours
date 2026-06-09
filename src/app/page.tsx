@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Layout } from '@/components/Layout';
-import { Landmark, Mountain, Coffee, Star, Play, Check, Award, X, Gem, ShieldCheck, MessageCircle } from 'lucide-react';
+import { Landmark, Mountain, Coffee, Star, Play, Check, Award, X, Gem, ShieldCheck, MessageCircle, BookOpen, Heart, History, Users, Sunrise, Leaf } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 import { CountUp } from '@/components/CountUp';
 import { Lightbox } from '@/components/Lightbox';
@@ -460,6 +460,128 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Khat Culture Home Section */}
+      <section className="py-32 px-4 bg-bg transition-colors duration-300">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-16">
+          <div className="lg:w-1/2 space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="inline-block px-4 py-1.5 rounded-full border border-gold text-gold text-sm font-semibold uppercase tracking-widest">
+                {t('home.khat_home_label')}
+              </div>
+              <h2 className="text-5xl md:text-7xl font-display leading-tight text-text">
+                {t('home.khat_home_title')}
+              </h2>
+              <p className="text-2xl text-gold font-body italic leading-relaxed">
+                {t('home.khat_home_subtitle')}
+              </p>
+              <p className="text-lg text-text-muted font-body leading-relaxed">
+                {t('home.khat_home_text')}
+              </p>
+              <div className="pt-8">
+                <Link 
+                  href="/ethiopian-stories" 
+                  className="bg-gold text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all inline-flex items-center gap-2 group"
+                >
+                  <span>{t('home.khat_home_cta')}</span>
+                  <motion.span whileHover={{ x: 5 }}>→</motion.span>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="lg:w-1/2 w-full">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl border border-gold/20 bg-surface group"
+            >
+              <Image
+                src="/chatgitl.png"
+                alt={t('home.khat_home_title')}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+
+              {/* Texture Overlay */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #C8922A 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+              
+              <div className="absolute top-8 left-8">
+                <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <p className="text-white text-xs font-bold uppercase tracking-widest">Social Ritual</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ethio Saudi Bond Home Section */}
+      <section className="py-32 px-4 bg-surface transition-colors duration-300">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+          <div className="lg:w-1/2 space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="inline-block px-4 py-1.5 rounded-full border border-gold text-gold text-sm font-semibold uppercase tracking-widest">
+                {t('home.ethio_saudi_home_label')}
+              </div>
+              <h2 className="text-5xl md:text-7xl font-display leading-tight text-text">
+                {t('home.ethio_saudi_home_title')}
+              </h2>
+              <p className="text-2xl text-gold font-body italic leading-relaxed">
+                {t('home.ethio_saudi_home_subtitle')}
+              </p>
+              <p className="text-lg text-text-muted font-body leading-relaxed">
+                {t('home.ethio_saudi_home_text')}
+              </p>
+              <div className="pt-8">
+                <Link 
+                  href="/ethiopian-stories" 
+                  className="bg-gold text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all inline-flex items-center gap-2 group"
+                >
+                  <span>{t('home.ethio_saudi_home_cta')}</span>
+                  <motion.span whileHover={{ x: 5 }}>→</motion.span>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="lg:w-1/2 w-full">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl border border-gold/20 bg-bg group"
+            >
+              <Image
+                src="/ethiosaudi.jpg"
+                alt={t('home.ethio_saudi_home_title')}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+
+              {/* Texture Overlay */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #C8922A 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+              
+              <div className="absolute top-8 left-8">
+                <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <p className="text-white text-xs font-bold uppercase tracking-widest">Shared Heritage</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
