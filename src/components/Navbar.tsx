@@ -63,18 +63,16 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-24">
-          {/* Logo Container */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="relative md:absolute ltr:left-4 rtl:right-4 md:top-1/2 md:-translate-y-1/2 block w-16 h-16 md:w-40 md:h-40 z-10">
-              <Image 
-                src="/logo_massive.png" 
-                alt="Raha Logo" 
-                fill 
-                className="object-contain"
-                priority
-              />
-            </Link>
-          </div>
+          {/* Logo */}
+          <Link href="/" className="relative md:absolute ltr:left-0 md:ltr:left-4 rtl:right-0 md:rtl:right-4 md:top-1/2 md:-translate-y-1/2 block w-24 h-24 md:w-40 md:h-40 z-10">
+            <Image 
+              src="/logo_massive.png" 
+              alt="Raha Logo" 
+              fill 
+              className="object-contain"
+              priority
+            />
+          </Link>
 
           {/* Spacer for Absolute Logo - only needed on desktop */}
           <div className="hidden md:block w-40" />
