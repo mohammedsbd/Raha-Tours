@@ -9,7 +9,8 @@ import { Layout } from '@/components/Layout';
 import { Clock, ArrowRight, Quote, Check, X } from 'lucide-react';
 
 export default function EthiopianStories() {
-  const { t } = useTranslation('common');
+  const { t, i18n } = useTranslation('common');
+  const isRTL = i18n.language === 'ar';
   
   // Dynamic stories data from translations
   const storyIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -59,11 +60,6 @@ export default function EthiopianStories() {
 
   const featuredStory = stories.find(s => s.featured);
   
-  // Note: Filtering by translated category name might be tricky if keys differ. 
-  // It's better to keep internal keys or use the 'Culture' etc. from the JSON keys.
-  // We'll use the translated category for display and an internal key for filtering if needed.
-  // But since the JSON 'category' is what we have, let's ensure it matches.
-  
   const filteredStories = activeFilter === "All" 
     ? stories.filter(s => !s.featured) 
     : stories.filter(s => !s.featured && s.category === categories.find(c => c.key === activeFilter)?.label);
@@ -72,7 +68,7 @@ export default function EthiopianStories() {
     <Layout>
       {/* Reading Progress Bar */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-gold origin-left z-[100]"
+        className="fixed top-0 ltr:left-0 rtl:right-0 ltr:right-0 rtl:left-0 h-1 bg-gold ltr:origin-left rtl:origin-right z-[100]"
         style={{ scaleX }}
       />
 
@@ -99,14 +95,14 @@ export default function EthiopianStories() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative z-10 px-4 max-w-4xl"
         >
-          <span className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-4 block">{t('stories_page.hero_badge')}</span>
+          <span className="text-gold font-bold uppercase tracking-[0.3em] rtl:tracking-normal text-xs mb-4 block">{t('stories_page.hero_badge')}</span>
           <h1 className="text-5xl md:text-8xl font-display text-white mb-6">
             {t('stories_page.hero_title')} <span className="italic text-gold">{t('stories_page.hero_title_italic')}</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 font-body mb-10 max-w-2xl mx-auto">
             {t('stories_page.hero_sub')}
           </p>
-          <nav className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-4">
+          <nav className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] rtl:tracking-normal flex items-center justify-center gap-4">
             <Link href="/" className="hover:text-gold transition-colors">{t('pack_page.breadcrumb_home')}</Link>
             <div className="w-1.5 h-1.5 bg-gold rounded-full" />
             <span className="text-gold">{t('nav.stories')}</span>
@@ -133,7 +129,7 @@ export default function EthiopianStories() {
                 />
               </div>
               <div className="lg:w-1/2 p-8 lg:p-16 flex flex-col justify-center">
-                <div className="flex items-center gap-4 mb-6 text-xs font-bold text-gold uppercase tracking-widest">
+                <div className="flex items-center gap-4 mb-6 text-xs font-bold text-gold uppercase tracking-widest rtl:tracking-normal">
                   <span className="px-3 py-1 bg-gold/10 rounded-full">{featuredStory.category}</span>
                   <div className="flex items-center gap-1 text-text-muted">
                     <Clock className="w-3 h-3" />
@@ -204,8 +200,8 @@ export default function EthiopianStories() {
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-surface/90 backdrop-blur-md text-gold text-[10px] font-bold uppercase tracking-widest rounded-full">
+                      <div className="absolute top-4 ltr:left-4 rtl:right-4">
+                        <span className="px-3 py-1 bg-surface/90 backdrop-blur-md text-gold text-[10px] font-bold uppercase tracking-widest rtl:tracking-normal rounded-full">
                           {story.category}
                         </span>
                       </div>
@@ -218,7 +214,7 @@ export default function EthiopianStories() {
                       {story.excerpt}
                     </p>
                     
-                    <div className="flex items-center justify-between text-[10px] font-bold text-text-muted uppercase tracking-widest border-t border-gold/10 pt-4 mt-auto">
+                    <div className="flex items-center justify-between text-[10px] font-bold text-text-muted uppercase tracking-widest rtl:tracking-normal border-t border-gold/10 pt-4 mt-auto">
                       <div className="flex items-center gap-4">
                         <div className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
@@ -226,7 +222,7 @@ export default function EthiopianStories() {
                         </div>
                         <span>{story.date}</span>
                       </div>
-                      <span className="text-gold group-hover:translate-x-1 transition-transform">{t('stories_page.read_story_arrow')}</span>
+                      <span className="text-gold ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">{t('stories_page.read_story_arrow')}</span>
                     </div>
                   </motion.div>
 
@@ -242,7 +238,7 @@ export default function EthiopianStories() {
                             {t('stories_page.pull_quote')}
                           </p>
                           <div className="w-20 h-1 bg-gold mx-auto mb-6" />
-                          <p className="text-gold font-bold uppercase tracking-widest text-sm">{t('stories_page.pull_attribution')}</p>
+                          <p className="text-gold font-bold uppercase tracking-widest rtl:tracking-normal text-sm">{t('stories_page.pull_attribution')}</p>
                         </div>
                       </div>
                     </div>
@@ -259,7 +255,7 @@ export default function EthiopianStories() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
           <div className="lg:w-1/2 space-y-8">
             <div>
-              <h2 className="text-5xl font-display mb-4 text-text">{t('stories_page.khat_section_title')}</h2>
+              <h2 className="text-5xl font-display mb-4 text-text leading-tight">{t('stories_page.khat_section_title')}</h2>
               <p className="text-xl text-gold font-body italic">{t('stories_page.khat_section_sub')}</p>
             </div>
             
@@ -269,7 +265,7 @@ export default function EthiopianStories() {
             </div>
 
             <div className="p-8 bg-surface rounded-3xl border border-gold/10 shadow-xl">
-              <h3 className="text-2xl font-display mb-4 text-text">{t('stories_page.khat_tourist_title')}</h3>
+              <h3 className="text-2xl font-display mb-4 text-text leading-tight">{t('stories_page.khat_tourist_title')}</h3>
               <p className="text-text-muted font-body leading-relaxed">
                 {t('stories_page.khat_tourist_text')}
               </p>
@@ -285,9 +281,9 @@ export default function EthiopianStories() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
-              <div className="absolute bottom-8 left-8 right-8">
+              <div className="absolute bottom-8 ltr:left-8 rtl:right-8 ltr:right-8 rtl:left-8">
                 <div className="bg-black/40 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10">
-                  <p className="text-white text-xs font-bold uppercase tracking-widest">{t('stories_page.featured_category')}</p>
+                  <p className="text-white text-xs font-bold uppercase tracking-widest rtl:tracking-normal">{t('stories_page.featured_category')}</p>
                   <p className="text-gold text-lg font-display">Harar, Eastern Ethiopia</p>
                 </div>
               </div>
@@ -303,7 +299,7 @@ export default function EthiopianStories() {
             <div>
               <div className="flex items-center gap-4 mb-4">
                 <Image src="/saudi2.png" alt="Saudi Logo" width={60} height={60} className="object-contain" />
-                <h2 className="text-5xl font-display text-text">{t('stories_page.ethio_saudi_bond_title')}</h2>
+                <h2 className="text-5xl font-display text-text leading-tight">{t('stories_page.ethio_saudi_bond_title')}</h2>
               </div>
               <p className="text-xl text-gold font-body italic">{t('stories_page.ethio_saudi_bond_sub')}</p>
             </div>
@@ -314,7 +310,7 @@ export default function EthiopianStories() {
             </div>
 
             <div className="p-8 bg-bg rounded-3xl border border-gold/10 shadow-xl">
-              <h3 className="text-2xl font-display mb-4 text-text">{t('stories_page.ethio_saudi_bond_tourist_title')}</h3>
+              <h3 className="text-2xl font-display mb-4 text-text leading-tight">{t('stories_page.ethio_saudi_bond_tourist_title')}</h3>
               <p className="text-text-muted font-body leading-relaxed">
                 {t('stories_page.ethio_saudi_bond_tourist_text')}
               </p>
@@ -330,9 +326,9 @@ export default function EthiopianStories() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
-              <div className="absolute bottom-8 left-8 right-8">
+              <div className="absolute bottom-8 ltr:left-8 rtl:right-8 ltr:right-8 rtl:left-8">
                 <div className="bg-black/40 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10">
-                  <p className="text-white text-xs font-bold uppercase tracking-widest">{t('stories_page.featured_category')}</p>
+                  <p className="text-white text-xs font-bold uppercase tracking-widest rtl:tracking-normal">{t('stories_page.featured_category')}</p>
                   <p className="text-gold text-lg font-display">Shared Heritage & Bonds</p>
                 </div>
               </div>
@@ -345,7 +341,7 @@ export default function EthiopianStories() {
       <section className="py-32 px-4 bg-surface transition-colors duration-300 border-t border-border">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-display mb-4 text-text">{t('stories_page.wisdom_title')}</h2>
+            <h2 className="text-5xl font-display mb-4 text-text leading-tight">{t('stories_page.wisdom_title')}</h2>
             <p className="text-text-muted font-body">{t('stories_page.wisdom_sub')}</p>
           </div>
 
@@ -361,7 +357,7 @@ export default function EthiopianStories() {
                   { title: t('stories_page.tip2_title'), text: t('stories_page.tip2_text') }
                 ].map((tip, i) => (
                   <div key={i} className="p-8 bg-bg border border-forest/10 rounded-3xl shadow-lg transition-colors duration-300">
-                    <h4 className="text-xl font-display font-bold mb-2 text-text">{tip.title}</h4>
+                    <h4 className="text-xl font-display font-bold mb-2 text-text leading-tight">{tip.title}</h4>
                     <p className="text-text-muted font-body text-sm leading-relaxed">{tip.text}</p>
                   </div>
                 ))}
@@ -379,7 +375,7 @@ export default function EthiopianStories() {
                   { title: t('stories_page.tip4_title'), text: t('stories_page.tip4_text') }
                 ].map((tip, i) => (
                   <div key={i} className="p-8 bg-bg border border-red-500/10 rounded-3xl shadow-lg transition-colors duration-300">
-                    <h4 className="text-xl font-display font-bold mb-2 text-text">{tip.title}</h4>
+                    <h4 className="text-xl font-display font-bold mb-2 text-text leading-tight">{tip.title}</h4>
                     <p className="text-text-muted font-body text-sm leading-relaxed">{tip.text}</p>
                   </div>
                 ))}

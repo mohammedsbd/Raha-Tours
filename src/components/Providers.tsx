@@ -10,6 +10,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
+    // Force Arabic on first load
+    i18n.changeLanguage('ar');
+    document.documentElement.dir = 'rtl';
+    document.documentElement.lang = 'ar';
   }, []);
 
   if (!mounted) {

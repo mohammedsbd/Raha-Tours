@@ -18,7 +18,7 @@ export const WhatsAppButton = () => {
 
   return (
     <motion.a
-      href="https://wa.me/251938404186"
+      href="https://wa.me/90701506322"
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0 }}

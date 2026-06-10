@@ -46,7 +46,17 @@ h1, h2, h3, h4, h5, h6 {
 
 /* RTL Support */
 [dir="rtl"] {
-  font-family: 'Cairo', sans-serif;
+  font-family: var(--font-cairo), sans-serif;
+}
+
+[dir="rtl"] h1, 
+[dir="rtl"] h2, 
+[dir="rtl"] h3, 
+[dir="rtl"] h4, 
+[dir="rtl"] h5, 
+[dir="rtl"] h6,
+[dir="rtl"] .font-display {
+  font-family: var(--font-cairo), sans-serif;
 }
 
 [dir="rtl"] body {

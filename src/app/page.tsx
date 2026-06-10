@@ -11,7 +11,8 @@ import { CountUp } from '@/components/CountUp';
 import { Lightbox } from '@/components/Lightbox';
 
 export default function Home() {
-  const { t } = useTranslation('common');
+  const { t, i18n } = useTranslation('common');
+  const isRTL = i18n.language === 'ar';
   const [mounted, setMounted] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -33,7 +34,7 @@ export default function Home() {
     { url: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=85", alt: "Lalibela rock church interior" },
     { url: "https://images.unsplash.com/photo-1612686635542-2244ed5d6df5?w=800&q=85", alt: "Ethiopian highlands aerial" },
     { url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=85", alt: "Danakil sulfur fields" },
-    { url: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=85", alt: "Omo Valley tribe" },
+    { url: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&q=90", alt: "Omo Valley tribe" },
     { url: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=800&q=85", alt: "Simien Mountains cliffs" },
     { url: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=85", alt: "Ethiopian coffee ceremony" },
     { url: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=85", alt: "Lake Tana monastery" },
@@ -177,7 +178,7 @@ export default function Home() {
               onClick={() => setIsVideoModalOpen(true)}
               className="btn-outline w-full sm:w-auto flex items-center justify-center gap-2"
             >
-              <Play className="w-4 h-4" />
+              <Play className="w-4 h-4 rtl:rotate-180" />
               {t('hero.cta_watch')}
             </button>
           </motion.div>
@@ -245,6 +246,87 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Legitimacy Section */}
+      <section className="py-24 px-4 bg-surface/50 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <motion.div 
+              initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2 space-y-6"
+            >
+              <h2 className="text-4xl md:text-5xl font-display text-gold">
+                {t('home.legitimacy_title')}
+              </h2>
+              <p className="text-xl font-display italic text-text">
+                {t('home.legitimacy_sub')}
+              </p>
+              <p className="text-lg text-text-muted font-body leading-relaxed">
+                {t('home.legitimacy_text')}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold">
+                    <ShieldCheck className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold mb-1">{t('home.legitimacy_item1_title')}</h3>
+                    <p className="text-sm text-text-muted">{t('home.legitimacy_item1_text')}</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold">
+                    <Check className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold mb-1">{t('home.legitimacy_item2_title')}</h3>
+                    <p className="text-sm text-text-muted">{t('home.legitimacy_item2_text')}</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold mb-1">{t('home.legitimacy_item3_title')}</h3>
+                    <p className="text-sm text-text-muted">{t('home.legitimacy_item3_text')}</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold mb-1">{t('home.badge_operator')}</h3>
+                    <p className="text-sm text-text-muted">{t('home.badge_ethiopian')}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2 relative aspect-video rounded-[2rem] overflow-hidden shadow-2xl"
+            >
+              <Image 
+                src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=85" 
+                alt="Legitimate Travel" 
+                fill 
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-8 ltr:left-8 rtl:right-8 ltr:right-8 rtl:left-8 text-white">
+                <p className="text-2xl font-display mb-2">{t('home.real_experiences')}</p>
+                <p className="text-white/80 font-body text-sm">{t('home.join_travelers')}</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Ethiopia by the Numbers */}
       <section className="py-32 px-4 bg-bg text-text border-y border-border transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
@@ -278,7 +360,7 @@ export default function Home() {
                 <div className="text-5xl md:text-6xl font-display text-gold mb-4">
                   <CountUp to={stat.to} suffix={stat.suffix} />
                 </div>
-                <p className="text-sm font-body text-text-muted uppercase tracking-widest">{stat.label}</p>
+                <p className="text-sm font-body text-text-muted uppercase tracking-widest rtl:tracking-normal">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -364,7 +446,7 @@ export default function Home() {
                 <motion.button 
                   initial={{ opacity: 0, y: 10 }}
                   whileHover={{ opacity: 1, y: 0 }}
-                  className="absolute bottom-8 right-8 btn-gold !py-2 !px-4 !text-xs opacity-0 group-hover:opacity-100"
+                  className="absolute bottom-8 ltr:right-8 rtl:left-8 btn-gold !py-2 !px-4 !text-xs opacity-0 group-hover:opacity-100"
                 >
                    {t('home.explore_btn')}
                 </motion.button>
@@ -377,7 +459,7 @@ export default function Home() {
       {/* Coffee Ceremony */}
       <section className="py-32 px-4 bg-surface overflow-hidden transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-center lg:text-left">
+          <div className="mb-16 text-center lg:ltr:text-left lg:rtl:text-right">
             <h2 className="text-5xl font-display mb-4">{t('coffee.title')}</h2>
             <p className="text-text-muted font-body max-w-2xl">{t('coffee.subtitle')}</p>
           </div>
@@ -388,16 +470,16 @@ export default function Home() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentCoffeeStep}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
+                  exit={{ opacity: 0, x: isRTL ? -20 : 20 }}
                   transition={{ duration: 0.5 }}
                   className="space-y-8"
                 >
                   <div className="flex items-center gap-4">
                     <span className="text-7xl font-display text-gold/20 font-bold">0{coffeeSteps[currentCoffeeStep].id}</span>
                     <div className="h-0.5 w-12 bg-gold" />
-                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold">{t('coffee.step' + coffeeSteps[currentCoffeeStep].id + '_title')}</span>
+                    <span className="text-xs font-bold uppercase tracking-[0.3em] rtl:tracking-normal text-gold">{t('coffee.step' + coffeeSteps[currentCoffeeStep].id + '_title')}</span>
                   </div>
                   
                   <h3 className="text-4xl md:text-5xl font-display leading-tight">
@@ -413,13 +495,13 @@ export default function Home() {
                       onClick={() => setCurrentCoffeeStep((prev) => (prev - 1 + coffeeSteps.length) % coffeeSteps.length)}
                       className="w-14 h-14 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-white transition-all group"
                     >
-                      <motion.div whileHover={{ x: -2 }}>←</motion.div>
+                      <motion.div whileHover={{ x: isRTL ? 2 : -2 }}>{isRTL ? '→' : '←'}</motion.div>
                     </button>
                     <button 
                       onClick={() => setCurrentCoffeeStep((prev) => (prev + 1) % coffeeSteps.length)}
                       className="w-14 h-14 rounded-full bg-gold text-white flex items-center justify-center hover:bg-gold-dark shadow-xl hover:shadow-gold/20 transition-all group"
                     >
-                      <motion.div whileHover={{ x: 2 }}>→</motion.div>
+                      <motion.div whileHover={{ x: isRTL ? -2 : 2 }}>{isRTL ? '←' : '→'}</motion.div>
                     </button>
                   </div>
                 </motion.div>
@@ -469,12 +551,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-16">
           <div className="lg:w-1/2 space-y-8">
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="inline-block px-4 py-1.5 rounded-full border border-gold text-gold text-sm font-semibold uppercase tracking-widest">
+              <div className="inline-block px-4 py-1.5 rounded-full border border-gold text-gold text-sm font-semibold uppercase tracking-widest rtl:tracking-normal">
                 {t('home.khat_home_label')}
               </div>
               <h2 className="text-5xl md:text-7xl font-display leading-tight text-text">
@@ -492,7 +574,7 @@ export default function Home() {
                   className="bg-gold text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all inline-flex items-center gap-2 group"
                 >
                   <span>{t('home.khat_home_cta')}</span>
-                  <motion.span whileHover={{ x: 5 }}>→</motion.span>
+                  <motion.span whileHover={{ x: isRTL ? -5 : 5 }} className="rtl:rotate-180">→</motion.span>
                 </Link>
               </div>
             </motion.div>
@@ -515,9 +597,9 @@ export default function Home() {
               {/* Texture Overlay */}
               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #C8922A 1px, transparent 0)', backgroundSize: '40px 40px' }} />
               
-              <div className="absolute top-8 left-8">
+              <div className="absolute top-8 ltr:left-8 rtl:right-8">
                 <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <p className="text-white text-xs font-bold uppercase tracking-widest">Social Ritual</p>
+                  <p className="text-white text-xs font-bold uppercase tracking-widest rtl:tracking-normal">Social Ritual</p>
                 </div>
               </div>
             </motion.div>
@@ -530,14 +612,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
           <div className="lg:w-1/2 space-y-8">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="space-y-6"
             >
               <div className="flex items-center gap-4 mb-6">
                 <Image src="/saudi2.png" alt="Saudi Logo" width={50} height={50} className="object-contain" />
-                <div className="inline-block px-4 py-1.5 rounded-full border border-gold text-gold text-sm font-semibold uppercase tracking-widest">
+                <div className="inline-block px-4 py-1.5 rounded-full border border-gold text-gold text-sm font-semibold uppercase tracking-widest rtl:tracking-normal">
                   {t('home.ethio_saudi_home_label')}
                 </div>
               </div>
@@ -556,7 +638,7 @@ export default function Home() {
                   className="bg-gold text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all inline-flex items-center gap-2 group"
                 >
                   <span>{t('home.ethio_saudi_home_cta')}</span>
-                  <motion.span whileHover={{ x: 5 }}>→</motion.span>
+                  <motion.span whileHover={{ x: isRTL ? -5 : 5 }} className="rtl:rotate-180">→</motion.span>
                 </Link>
               </div>
             </motion.div>
@@ -579,9 +661,9 @@ export default function Home() {
               {/* Texture Overlay */}
               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #C8922A 1px, transparent 0)', backgroundSize: '40px 40px' }} />
               
-              <div className="absolute top-8 left-8">
+              <div className="absolute top-8 ltr:left-8 rtl:right-8">
                 <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <p className="text-white text-xs font-bold uppercase tracking-widest">Shared Heritage</p>
+                  <p className="text-white text-xs font-bold uppercase tracking-widest rtl:tracking-normal">Shared Heritage</p>
                 </div>
               </div>
             </motion.div>
@@ -628,22 +710,22 @@ export default function Home() {
       <section className="py-32 px-4 bg-surface overflow-hidden transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-            <div>
+            <div className="text-center md:ltr:text-left md:rtl:text-right">
               <h2 className="text-5xl font-display mb-4">{t('home.curated_title')}</h2>
               <p className="text-text-muted font-body">{t('home.curated_sub')}</p>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center">
               <button 
                 onClick={() => setCurrentDest((prev) => (prev - 1 + destinations.length) % destinations.length)}
                 className="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-white transition-all"
               >
-                ←
+                {isRTL ? '→' : '←'}
               </button>
               <button 
                 onClick={() => setCurrentDest((prev) => (prev + 1) % destinations.length)}
                 className="w-12 h-12 rounded-full bg-gold text-white flex items-center justify-center hover:bg-gold-dark transition-all"
               >
-                →
+                {isRTL ? '←' : '→'}
               </button>
             </div>
           </div>
@@ -663,13 +745,13 @@ export default function Home() {
                 </div>
                 <div className="lg:w-1/2 p-12 flex flex-col justify-center">
                   <h3 className="text-4xl font-display mb-4">{destinations[currentDest].name}</h3>
-                  <p className="text-gold font-bold text-sm tracking-[0.2em] mb-6 uppercase">{destinations[currentDest].tagline}</p>
+                  <p className="text-gold font-bold text-sm tracking-[0.2em] rtl:tracking-normal mb-6 uppercase">{destinations[currentDest].tagline}</p>
                   <p className="text-text-muted font-body leading-relaxed mb-8">
                     {t('home.destination_discover')}
                   </p>
                   <Link href="/destinations" className="text-gold font-bold flex items-center gap-2 group">
                     <span>{t('home.destination_view')}</span>
-                    <motion.span whileHover={{ x: 5 }}>→</motion.span>
+                    <motion.span whileHover={{ x: isRTL ? -5 : 5 }} className="rtl:rotate-180">→</motion.span>
                   </Link>
                 </div>
               </motion.div>
@@ -731,7 +813,7 @@ export default function Home() {
               >
                 <div className="relative h-64 rounded-2xl overflow-hidden mb-6 shadow-xl">
                   <Image src={story.image} alt={story.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute top-4 left-4 bg-white/90 dark:bg-black/80 px-3 py-1 rounded-full text-[10px] font-bold text-gold uppercase tracking-widest">{story.cat}</div>
+                  <div className="absolute top-4 ltr:left-4 rtl:right-4 bg-white/90 dark:bg-black/80 px-3 py-1 rounded-full text-[10px] font-bold text-gold uppercase tracking-widest rtl:tracking-normal">{story.cat}</div>
                 </div>
                 <h3 className="text-2xl font-display group-hover:text-gold transition-colors">{story.title}</h3>
               </motion.div>
@@ -743,18 +825,18 @@ export default function Home() {
       {/* Flavors of Abyssinia */}
       <section className="py-32 px-4 bg-bg transition-colors duration-300">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-          <div className="lg:w-1/3">
+          <div className="lg:w-1/3 text-center lg:ltr:text-left lg:rtl:text-right">
             <h2 className="text-5xl font-display mb-8">{t('home.flavors_title')}</h2>
             <p className="text-text-muted font-body text-lg leading-relaxed mb-8">
               {t('home.flavors_sub')}
             </p>
-            <div className="space-y-4">
+            <div className="space-y-4 inline-block lg:block">
               {[t('home.feature_organic'), t('home.feature_grains'), t('home.feature_spices'), t('home.feature_communal')].map((feat, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full bg-gold/10 flex items-center justify-center">
                     <Check className="w-3 h-3 text-gold" />
                   </div>
-                  <span className="font-bold text-xs uppercase tracking-widest">{feat}</span>
+                  <span className="font-bold text-xs uppercase tracking-widest rtl:tracking-normal">{feat}</span>
                 </div>
               ))}
             </div>
@@ -804,7 +886,7 @@ export default function Home() {
             onClick={() => setIsVideoModalOpen(true)}
             className="w-24 h-24 bg-gold rounded-full flex items-center justify-center shadow-2xl mb-8 mx-auto"
           >
-            <Play className="w-10 h-10 text-white fill-white ml-1" />
+            <Play className="w-10 h-10 text-white fill-white ltr:ml-1 rtl:mr-1 rtl:rotate-180" />
           </motion.button>
           <h2 className="text-4xl md:text-6xl font-display text-gold mb-4">{t('home.video_title')}</h2>
           <p className="text-xl text-text-muted font-body">{t('home.video_sub')}</p>
@@ -816,7 +898,7 @@ export default function Home() {
       {/* Trust Badges */}
       <section className="py-16 px-4 bg-bg transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <p className="text-center text-sm font-bold uppercase tracking-widest text-text-muted mb-12">{t('home.trust_title')}</p>
+          <p className="text-center text-sm font-bold uppercase tracking-widest rtl:tracking-normal text-text-muted mb-12">{t('home.trust_title')}</p>
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60">
             {[
               { icon: <Award className="w-5 h-5 text-gold" />, text: t('home.badge_operator') },
@@ -825,7 +907,7 @@ export default function Home() {
               { icon: <Check className="w-5 h-5 text-gold" />, text: t('home.badge_iata') },
               { icon: <Check className="w-5 h-5 text-gold" />, text: t('home.badge_ethiopian') }
             ].map((badge, i) => (
-              <div key={i} className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider">
+              <div key={i} className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider rtl:tracking-normal">
                 {badge.icon}
                 <span>{badge.text}</span>
               </div>
@@ -854,7 +936,7 @@ export default function Home() {
               onClick={(e) => e.stopPropagation()}
             >
               <button 
-                className="absolute top-4 right-4 text-white hover:text-gold z-10"
+                className="absolute top-4 ltr:right-4 rtl:left-4 text-white hover:text-gold z-10"
                 onClick={() => setIsVideoModalOpen(false)}
               >
                 <X className="w-8 h-8" />

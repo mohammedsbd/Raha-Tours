@@ -20,7 +20,8 @@ import {
 } from 'lucide-react';
 
 export default function About() {
-  const { t } = useTranslation('common');
+  const { t, i18n } = useTranslation('common');
+  const isRTL = i18n.language === 'ar';
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -227,8 +228,8 @@ export default function About() {
       {/* Our Approach */}
       <section className="py-32 px-4 bg-surface relative overflow-hidden">
         {/* Background Decorative Pattern */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -mr-48 -mt-48" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -ml-48 -mb-48" />
+        <div className="absolute top-0 ltr:right-0 rtl:left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -mr-48 -mt-48" />
+        <div className="absolute bottom-0 ltr:left-0 rtl:right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -ml-48 -mb-48" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
@@ -246,10 +247,10 @@ export default function About() {
               >
                 {/* Connector Line for Desktop */}
                 {i < approachSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-12 left-full w-full h-[2px] bg-gold/20 -z-10" />
+                  <div className="hidden lg:block absolute top-12 ltr:left-full rtl:right-full w-full h-[2px] bg-gold/20 -z-10" />
                 )}
                 
-                <div className="mb-6 flex flex-col items-center lg:items-start">
+                <div className="mb-6 flex flex-col items-center lg:ltr:items-start lg:rtl:items-end">
                   <span className="text-6xl font-display text-gold/20 group-hover:text-gold/40 transition-colors duration-300">
                     {step.step}
                   </span>
@@ -258,7 +259,7 @@ export default function About() {
                   </div>
                 </div>
                 
-                <div className="text-center lg:text-left">
+                <div className="text-center lg:ltr:text-left lg:rtl:text-right">
                   <h3 className="text-xl font-display font-bold mb-4 text-text">{step.title}</h3>
                   <p className="text-text-muted font-body text-sm leading-relaxed">{step.text}</p>
                 </div>
@@ -290,7 +291,7 @@ export default function About() {
                 <ShieldCheck className="w-10 h-10 text-gold" />
                 <h2 className="text-3xl md:text-4xl font-display text-text">{t('about_page.trust_title')}</h2>
               </div>
-              <h3 className="text-xl font-body text-gold font-bold mb-8 uppercase tracking-widest">
+              <h3 className="text-xl font-body text-gold font-bold mb-8 uppercase tracking-widest rtl:tracking-normal">
                 {t('about_page.trust_commitment_title')}
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -337,7 +338,7 @@ export default function About() {
               className="inline-flex items-center gap-3 bg-gold hover:bg-gold/90 text-white px-10 py-5 rounded-full text-lg font-bold shadow-2xl transition-all duration-300"
             >
               <span>{t('about_page.cta_button')}</span>
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5 rtl:rotate-180" />
             </motion.a>
           </motion.div>
         </div>

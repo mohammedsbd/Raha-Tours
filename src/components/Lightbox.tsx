@@ -80,7 +80,7 @@ export const Lightbox = ({ images, index, onClose, onNext, onPrev }: LightboxPro
         </AnimatePresence>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-sm font-medium tracking-widest uppercase">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-sm font-medium tracking-widest rtl:tracking-normal uppercase">
         {index + 1} / {images.length}
       </div>
     </motion.div>

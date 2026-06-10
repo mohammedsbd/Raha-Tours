@@ -4,10 +4,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import { Instagram, Facebook, Youtube, MessageCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export const Footer = () => {
   const { t } = useTranslation('common');
+
+  const footerDestinations = [
+    { name: t('dest_page.list.lalibela.name'), href: '/destinations' },
+    { name: t('dest_page.list.semien.name'), href: '/destinations' },
+    { name: t('dest_page.list.danakil.name'), href: '/destinations' },
+    { name: t('dest_page.list.omo.name'), href: '/destinations' },
+    { name: t('dest_page.list.gondar.name'), href: '/destinations' },
+    { name: t('dest_page.list.lake_tana.name'), href: '/destinations' },
+    { name: t('dest_page.list.axum.name'), href: '/destinations' },
+    { name: t('dest_page.list.entoto.name'), href: '/destinations' },
+    { name: t('dest_page.list.bale.name'), href: '/destinations' },
+  ];
 
   return (
     <footer className="bg-bg text-text py-20 px-4 sm:px-6 lg:px-8 border-t border-border transition-colors duration-300">
@@ -52,7 +63,6 @@ export const Footer = () => {
               <li><Link href="/" className="hover:text-gold transition-colors">{t('nav.home')}</Link></li>
               <li><Link href="/destinations" className="hover:text-gold transition-colors">{t('nav.destinations')}</Link></li>
               <li><Link href="/packages" className="hover:text-gold transition-colors">{t('nav.packages')}</Link></li>
-              <li><Link href="/luxury-stays" className="hover:text-gold transition-colors">{t('nav.luxury_stays')}</Link></li>
               <li><Link href="/ethiopian-stories" className="hover:text-gold transition-colors">{t('nav.stories')}</Link></li>
               <li><Link href="/about" className="hover:text-gold transition-colors">{t('nav.about')}</Link></li>
             </ul>
@@ -62,15 +72,9 @@ export const Footer = () => {
           <div>
             <h3 className="text-xl font-display text-gold mb-8">{t('nav.destinations')}</h3>
             <ul className="space-y-4 text-base text-text-muted grid grid-cols-1 sm:grid-cols-2 gap-x-8">
-              <li><Link href="/destinations" className="hover:text-gold transition-colors">Lalibela</Link></li>
-              <li><Link href="/destinations" className="hover:text-gold transition-colors">Simien Mountains</Link></li>
-              <li><Link href="/destinations" className="hover:text-gold transition-colors">Danakil Depression</Link></li>
-              <li><Link href="/destinations" className="hover:text-gold transition-colors">Omo Valley</Link></li>
-              <li><Link href="/destinations" className="hover:text-gold transition-colors">Gondar</Link></li>
-              <li><Link href="/destinations" className="hover:text-gold transition-colors">Lake Tana</Link></li>
-              <li><Link href="/destinations" className="hover:text-gold transition-colors">Axum</Link></li>
-              <li><Link href="/destinations" className="hover:text-gold transition-colors">Entoto</Link></li>
-              <li><Link href="/destinations" className="hover:text-gold transition-colors">Bale Mountains</Link></li>
+              {footerDestinations.map((dest, i) => (
+                <li key={i}><Link href={dest.href} className="hover:text-gold transition-colors">{dest.name}</Link></li>
+              ))}
             </ul>
           </div>
 
@@ -80,19 +84,31 @@ export const Footer = () => {
             <ul className="space-y-6 text-base text-text-muted">
               <li className="flex items-start gap-4">
                 <span className="text-gold text-xl">📍</span>
-                <span>Bole Road, Addis Ababa, Ethiopia</span>
+                <div>
+                  <span className="font-bold block text-xs uppercase tracking-widest rtl:tracking-normal text-gold mb-1">{t('footer.address_label')}</span>
+                  <span>Bole Road, Addis Ababa, Ethiopia</span>
+                </div>
               </li>
               <li className="flex items-center gap-4">
                 <span className="text-gold text-xl">📞</span>
-                <span>+251 93 840 4186</span>
+                <div>
+                  <span className="font-bold block text-xs uppercase tracking-widest rtl:tracking-normal text-gold mb-1">{t('footer.phone_label')}</span>
+                  <span>+251 93 840 4186</span>
+                </div>
               </li>
               <li className="flex items-center gap-4">
                 <span className="text-gold text-xl">📧</span>
-                <span>hello@rahaethiopiatours.com</span>
+                <div>
+                  <span className="font-bold block text-xs uppercase tracking-widest rtl:tracking-normal text-gold mb-1">{t('footer.email_label')}</span>
+                  <span>hello@rahaethiopiatours.com</span>
+                </div>
               </li>
               <li className="flex items-center gap-4">
                 <span className="text-gold text-xl">💬</span>
-                <span>WhatsApp: +251 93 840 4186</span>
+                <div>
+                  <span className="font-bold block text-xs uppercase tracking-widest rtl:tracking-normal text-gold mb-1">{t('footer.whatsapp_label')}</span>
+                  <span>090701506322</span>
+                </div>
               </li>
             </ul>
           </div>

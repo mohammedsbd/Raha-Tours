@@ -48,7 +48,6 @@ export const Navbar = () => {
     { name: t('nav.home'), href: '/' },
     { name: t('nav.destinations'), href: '/destinations' },
     { name: t('nav.packages'), href: '/packages' },
-    { name: t('nav.luxury_stays'), href: '/luxury-stays' },
     { name: t('nav.stories'), href: '/ethiopian-stories' },
     { name: t('nav.about'), href: '/about' },
   ];
@@ -83,7 +82,7 @@ export const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-colors hover:text-gold ${
+                className={`text-sm font-bold uppercase tracking-widest rtl:tracking-normal whitespace-nowrap transition-colors hover:text-gold ${
                   pathname === link.href ? 'text-gold' : 'text-text'
                 }`}
               >
