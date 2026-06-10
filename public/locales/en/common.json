@@ -176,6 +176,8 @@
     "newsletter_placeholder": "Your email address",
     "newsletter_button": "Subscribe",
     "newsletter_note": "No spam. Unsubscribe anytime. Join 4,200+ travelers already subscribed.",
+    "real_experiences": "Real experiences, real people",
+    "join_travelers": "Join thousands of travelers who trusted Raha Tours on their Abyssinian journey.",
     "testimonial1_name": "Sofia M.",
     "testimonial1_flag": "🇮🇹",
     "testimonial1_quote": "Lalibela rewired my brain. I arrived a tourist and left a pilgrim. Raha's team was extraordinary.",
@@ -721,5 +723,7 @@
   "layout": {
     "meta_title": "Raha Tours | The Land of Origins",
     "meta_desc": "Discover the ancient wonders, vibrant cultures, and breathtaking landscapes of Ethiopia with Raha Tours."
-  }
+  },
+  "Some of our stories": "Some of our stories",
+  "Check Out Some Stories": "Check Out Some Stories"
 }
