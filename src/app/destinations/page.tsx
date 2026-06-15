@@ -12,7 +12,7 @@ export default function Destinations() {
   const { t, i18n } = useTranslation('common');
   const isRTL = i18n.language === 'ar';
   
-  const destinationKeys = ['entoto', 'lalibela', 'semien', 'danakil', 'lake_tana', 'omo', 'axum', 'gondar', 'bale'];
+  const destinationKeys = ['entoto', 'nejashi', 'semien', 'danakil', 'lake_tana', 'omo', 'axum', 'wenchi', 'bale'];
   
   const destinations = destinationKeys.map(key => ({
     id: key,
@@ -20,25 +20,26 @@ export default function Destinations() {
     sub: t(`dest_page.list.${key}.sub`),
     region: t(`dest_page.list.${key}.region`),
     image: key === 'entoto' ? '/entoto.jpg' : 
-           key === 'lalibela' ? '/lalibela.webp' : 
+           key === 'nejashi' ? '/goodnejashi.png' : 
            key === 'semien' ? '/semien2.jpg' : 
            key === 'danakil' ? '/afar.webp' : 
            key === 'lake_tana' ? '/lake.jpg' : 
            key === 'omo' ? '/omo.jpg' : 
            key === 'axum' ? '/axum.jpg' : 
-           key === 'gondar' ? '/gonadrjpg.jpg' : '/balejpg.jpg',
+           key === 'wenchi' ? '/wenchijpg.jpg' : '/balejpg.jpg',
     description: t(`dest_page.list.${key}.description`),
     highlights: t(`dest_page.list.${key}.highlights`, { returnObjects: true }) as string[],
     bestTime: t(`dest_page.list.${key}.bestTime`)
   }));
 
   const comparisonData = [
+    { dest: "Al-Nejashi", bestFor: t('dest_page.best_for_history'), duration: "1 day", diff: t('dest_page.diff_easy'), season: "Year-round", unesco: false, wildlife: false },
     { dest: "Lalibela", bestFor: t('dest_page.best_for_history'), duration: "2-3 days", diff: t('dest_page.diff_easy'), season: "Oct-Apr", unesco: true, wildlife: false },
     { dest: "Simien Mts", bestFor: t('dest_page.best_for_trekking'), duration: "3-5 days", diff: t('dest_page.diff_challenging'), season: "Oct-Apr", unesco: true, wildlife: true },
     { dest: "Danakil", bestFor: t('dest_page.best_for_adventure'), duration: "3-4 days", diff: t('dest_page.diff_very_hard'), season: "Nov-Feb", unesco: false, wildlife: false },
     { dest: "Omo Valley", bestFor: t('dest_page.best_for_culture'), duration: "5-7 days", diff: t('dest_page.diff_easy'), season: "Sep-Mar", unesco: false, wildlife: true },
     { dest: "Axum", bestFor: t('dest_page.best_for_archaeology'), duration: "1-2 days", diff: t('dest_page.diff_easy'), season: "Oct-Mar", unesco: true, wildlife: false },
-    { dest: "Gondar", bestFor: t('dest_page.best_for_architecture'), duration: "1-2 days", diff: t('dest_page.diff_easy'), season: "Oct-Apr", unesco: true, wildlife: false },
+    { dest: "Wenchi", bestFor: t('dest_page.best_for_nature'), duration: "1 day", diff: t('dest_page.diff_moderate'), season: "Year-round", unesco: false, wildlife: false },
     { dest: "Bale Mts", bestFor: t('dest_page.best_for_wildlife'), duration: "3-4 days", diff: t('dest_page.diff_moderate'), season: "Oct-Jan", unesco: true, wildlife: true },
     { dest: "Lake Tana", bestFor: t('dest_page.best_for_nature'), duration: "1-2 days", diff: t('dest_page.diff_easy'), season: "Sep-Jan", unesco: true, wildlife: true },
   ];
@@ -143,76 +144,54 @@ export default function Destinations() {
         </div>
       </section>
 
-      {/* Lalibela Spotlight */}
-      <section className="relative bg-bg text-text py-32 overflow-hidden transition-colors duration-300 border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row gap-16">
-          <div className="lg:w-3/5 space-y-32">
-            <div>
-              <h2 className="text-gold font-bold uppercase tracking-[0.2em] rtl:tracking-normal mb-4">{t('dest_page.deep_dive_label')}</h2>
-              <h3 className="text-5xl md:text-7xl font-display mb-12">{t('dest_page.deep_dive_title')}</h3>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                className="space-y-8"
-              >
-                <div className="ltr:border-l-4 rtl:border-r-4 border-gold ltr:pl-8 rtl:pr-8">
-                  <h4 className="text-2xl font-display mb-4">{t('dest_page.deep_dive_history_title')}</h4>
-                  <p className="text-text-muted font-body leading-relaxed">
-                    {t('dest_page.deep_dive_history_text')}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="ltr:border-l-4 rtl:border-r-4 border-gold ltr:pl-8 rtl:pr-8"
-            >
-              <h4 className="text-2xl font-display mb-4">{t('dest_page.deep_dive_arch_title')}</h4>
-              <p className="text-text-muted font-body leading-relaxed">
-                {t('dest_page.deep_dive_arch_text')}
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="ltr:border-l-4 rtl:border-r-4 border-gold ltr:pl-8 rtl:pr-8"
-            >
-              <h4 className="text-2xl font-display mb-4">{t('dest_page.deep_dive_exp_title')}</h4>
-              <p className="text-text-muted font-body leading-relaxed">
-                {t('dest_page.deep_dive_exp_text')}
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="ltr:border-l-4 rtl:border-r-4 border-gold ltr:pl-8 rtl:pr-8 pb-12"
-            >
-              <h4 className="text-2xl font-display mb-4">{t('dest_page.deep_dive_getting_title')}</h4>
-              <p className="text-text-muted font-body leading-relaxed">
-                {t('dest_page.deep_dive_getting_text')}
-              </p>
-            </motion.div>
+      {/* Nejashi Mosque Feature */}
+      <section className="py-32 px-4 bg-bg transition-colors duration-300 border-y border-border">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-gold font-bold uppercase tracking-[0.2em] rtl:tracking-normal mb-4">{t('dest_page.deep_dive_label')}</h2>
+            <h3 className="text-5xl md:text-7xl font-display mb-12">{t('dest_page.deep_dive_title')}</h3>
           </div>
 
-          <div className="lg:w-2/5 relative">
-            <div className="lg:sticky lg:top-32 h-[400px] lg:h-[70vh] rounded-[40px] overflow-hidden shadow-2xl border border-gold/20">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="relative mb-24 group"
+          >
+            <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-[40px] overflow-hidden shadow-2xl border border-gold/20 bg-surface">
               <Image
-                src="/lalibela.webp"
-                alt="Bete Giyorgis"
+                src="/goodnejashi.png"
+                alt="Al-Nejashi Mosque"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              {/* Decorative overlay for captions */}
+              <div className="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
               <div className="absolute bottom-8 ltr:left-8 rtl:right-8 ltr:right-8 rtl:left-8 text-white">
-                <p className="text-xs font-bold uppercase tracking-widest rtl:tracking-normal text-gold mb-2">{t('dest_page.iconic_view')}</p>
+                <p className="text-xs font-bold uppercase tracking-widest rtl:tracking-normal text-gold mb-2">{t('dest_page.deep_dive_iconic_view')}</p>
                 <p className="text-xl font-display">{t('dest_page.deep_dive_church')}</p>
               </div>
             </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {[
+              { id: 'history', title: 'dest_page.deep_dive_history_title', text: 'dest_page.deep_dive_history_text' },
+              { id: 'arch', title: 'dest_page.deep_dive_arch_title', text: 'dest_page.deep_dive_arch_text' },
+              { id: 'exp', title: 'dest_page.deep_dive_exp_title', text: 'dest_page.deep_dive_exp_text' },
+              { id: 'getting', title: 'dest_page.deep_dive_getting_title', text: 'dest_page.deep_dive_getting_text' }
+            ].map((item) => (
+              <motion.div 
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="ltr:border-l-2 rtl:border-r-2 border-gold ltr:pl-6 rtl:pr-6"
+              >
+                <h4 className="text-xl font-display mb-4 text-text">{t(item.title)}</h4>
+                <p className="text-text-muted font-body leading-relaxed text-sm">
+                  {t(item.text)}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

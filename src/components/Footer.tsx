@@ -13,7 +13,7 @@ export const Footer = () => {
     { name: t('dest_page.list.semien.name'), href: '/destinations' },
     { name: t('dest_page.list.danakil.name'), href: '/destinations' },
     { name: t('dest_page.list.omo.name'), href: '/destinations' },
-    { name: t('dest_page.list.gondar.name'), href: '/destinations' },
+    { name: t('dest_page.list.wenchi.name'), href: '/destinations' },
     { name: t('dest_page.list.lake_tana.name'), href: '/destinations' },
     { name: t('dest_page.list.axum.name'), href: '/destinations' },
     { name: t('dest_page.list.entoto.name'), href: '/destinations' },

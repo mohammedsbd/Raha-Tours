@@ -31,7 +31,7 @@ export default function Home() {
   ];
 
   const galleryImages = [
-    { url: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=85", alt: "Lalibela rock church interior" },
+    { url: "/goodnejashi.png", alt: "Al-Nejashi Mosque" },
     { url: "https://images.unsplash.com/photo-1612686635542-2244ed5d6df5?w=800&q=85", alt: "Ethiopian highlands aerial" },
     { url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=85", alt: "Danakil sulfur fields" },
     { url: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&q=90", alt: "Omo Valley tribe" },
@@ -55,16 +55,16 @@ export default function Home() {
 
   const signatureExperiences = [
     { title: t('home.signature_hyena_title'), image: "/hayena.jpg", text: t('home.signature_hyena_text') },
-    { title: t('home.signature_lalibela_title'), image: "/lalibela.webp", text: t('home.signature_lalibela_text') },
+    { title: t('home.signature_nejashi_title'), image: "/goodnejashi.png", text: t('home.signature_nejashi_text') },
     { title: t('home.signature_salt_title'), image: "/afar.webp", text: t('home.signature_salt_text') },
     { title: t('home.signature_omo_title'), image: "/hammar.jpg", text: t('home.signature_omo_text') }
   ];
 
   const destinations = [
     {
-      name: t('home.dest_lalibela_name'),
-      image: "/lalibela.webp",
-      tagline: t('home.dest_lalibela_tagline')
+      name: t('home.dest_nejashi_name'),
+      image: "/goodnejashi.png",
+      tagline: t('home.dest_nejashi_tagline')
     },
     {
       name: t('home.dest_simien_name'),
@@ -384,17 +384,17 @@ export default function Home() {
               },
               { 
                 name: t('home.region2_name'), 
-                image: "/tigray.webp", 
+                image: "/goodnejashi.png", 
                 text: t('home.region2_text') 
               },
               { 
                 name: t('home.region3_name'), 
-                image: "/oromia.jpg", 
+                image: "/sof umar.jpg", 
                 text: t('home.region3_text') 
               },
               { 
                 name: t('home.region4_name'), 
-                image: "/omo.jpg", 
+                image: "/wenchijpg.jpg", 
                 text: t('home.region4_text') 
               },
               { 
@@ -419,7 +419,7 @@ export default function Home() {
               },
               { 
                 name: t('home.region9_name'), 
-                image: "/harar.jpg", 
+                image: "/hararber.jpg", 
                 text: t('home.region9_text') 
               }
             ].map((region: any, i) => (
@@ -588,7 +588,7 @@ export default function Home() {
               className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl border border-gold/20 bg-surface group"
             >
               <Image
-                src="/chatgitl.png"
+                src="/enhancedchat.png"
                 alt={t('home.khat_home_title')}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -652,7 +652,7 @@ export default function Home() {
               className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl border border-gold/20 bg-bg group"
             >
               <Image
-                src="/saudi2.png"
+                src="/goodnejashi.png"
                 alt={t('home.ethio_saudi_home_title')}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -800,8 +800,8 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {[
               { title: t('home.story1_title'), image: "https://images.unsplash.com/photo-1571957156261-8c3265fe66c6?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", cat: t('home.story1_cat') },
-              { title: t('home.story2_title'), image: "/monk.jpg", cat: t('home.story2_cat') },
-              { title: t('home.story3_title'), image: "/Erta_Ale.jpg", cat: t('home.story3_cat') }
+              { title: t('home.story2_title'), image: "/ustaz.jpg", cat: t('home.story2_cat') },
+              { title: t('home.story3_title'), image: "/jump.jpg", cat: t('home.story3_cat') }
             ].map((story, i) => (
               <motion.div
                 key={i}
